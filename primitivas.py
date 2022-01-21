@@ -1,8 +1,32 @@
+#Primitivas:
+#Se refiere al esquema interpretativo utilizado por OpenGL
+#para determinar lo que representa un arreglo de vértices 
+#al ser rendereado
+
 #Importat librerias
 
 from OpenGL.GL import *
 from glew_wish import *
 import glfw
+
+def draw():
+    glBegin(GL_TRIANGLES)
+    #3 vertices que openGL interpreta como triangulo
+    glColor3f(0.7,0.7,0)
+    glVertex3f(-1,0,0)
+    glColor3f(0,1,1)
+    glVertex3f(0,1,0)
+    glColor3f(1,0,1)
+    glVertex3f(0.7,0.5,0)
+
+    glColor3f(0.7,0.7,0)
+    glVertex3f(-1,0,0)
+    glColor3f(0,1,1)
+    glVertex3f(0,-1,0)
+    glColor3f(1,0,1)
+    glVertex3f(0.7,0.5,0)
+
+    glEnd()
 
 def main():
     width = 700
@@ -44,14 +68,14 @@ def main():
     #Draw loop
     while not glfw.window_should_close(window):
         #Establecer el viewport
-        glViewport(0,0,800,600)
+        #glViewport(0,0,800,600)
         #Establecer color de borrado
         glClearColor(0,0.7,0.9,1)
         #Borrar el contenido del viewport
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT )
 
         #Dibujar
-        #Nos queda pendiente el dibujo
+        draw()
 
         #Polling de inputs
         glfw.poll_events()
